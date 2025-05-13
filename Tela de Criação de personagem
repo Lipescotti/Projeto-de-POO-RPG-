@@ -85,6 +85,7 @@ public class TelaCriação implements ActionListener{
 		ldGenero.setBounds(10,110,100,30);
 		txtnome.setBounds(100,10,150,30);
 		txtidade.setBounds(100,60,150,30);
+		txtidade.setText("0");
 		txtgenero.setBounds(100,110,150,30);
 		
 		ldRace.setBounds(10,160,100,30);
@@ -344,9 +345,12 @@ public class TelaCriação implements ActionListener{
 				pes = new Personagem();
 				pes = pdao.buscar(y);
 				
+				
 				txtnome.setText(pes.getNome());
 				txtidade.setText(String.valueOf(pes.getIdade()));
 				txtgenero.setText(pes.getGenero());
+				raças.setSelectedIndex(pes.getRace());
+				classes.setSelectedIndex(pes.getTrabalho());
 				
 				nome.setText(pes.getNome());
 				idade.setText(String.valueOf(pes.getIdade()));
@@ -417,6 +421,7 @@ public class TelaCriação implements ActionListener{
 				
 				pes = new Personagem(n, i, g, r, c);
 				pdao.alterar(y, pes);
+				
 				
 				pes.escolherRaca();
 				pes.escolherTrabalho();
