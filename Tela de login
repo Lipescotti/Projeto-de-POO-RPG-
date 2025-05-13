@@ -1,0 +1,131 @@
+package RPG;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class TelaPrincipal implements ActionListener{
+	
+	PersonagemDao pdao = new PersonagemDao();
+	
+	JFrame telaPrincipal = new JFrame("Tela principal");
+	JPanel painelPrincipal = new JPanel();
+	
+	JButton btNovo = new JButton("Criar Novo Personagem");
+	JButton btLogin = new JButton("Logar");
+	
+	JLabel lbnome = new JLabel ("Nome: ");
+	JLabel lbsenha = new JLabel ("Senha: ");
+	JLabel lbr = new JLabel ("<html><pre>"
+            + "RRRRR<br>"
+            + "R   R<br>"
+            + "RRRRR<br>"
+            + "R  R <br>"
+            + "R   R"
+            + "</pre></html>");
+	
+	JLabel lbp = new JLabel("<html><pre>"
+            + "PPPPP<br>"
+            + "P   P<br>"
+            + "PPPPP<br>"
+            + "P    <br>"
+            + "P    "
+            + "</pre></html>");
+	
+	JLabel lbg = new JLabel("<html><pre>"
+            + "GGGGG<br>"
+            + "G    <br>"
+            + "G  GG<br>"
+            + "G   G<br>"
+            + "GGGGG"
+            + "</pre></html>");
+	
+	JTextField txtnome = new JTextField();
+	JTextField txtsenha = new JTextField();
+
+	void criarTelaPrincipal()
+	{
+		telaPrincipal.setSize(300,300);
+		telaPrincipal.setLocation(600, 250);
+		
+		painelPrincipal.setLayout(null);
+		
+		painelPrincipal.add(lbnome);
+		painelPrincipal.add(txtnome);
+		lbnome.setBounds(10,50, 50, 30);
+		txtnome.setBounds(100,50, 150, 30);
+		
+		painelPrincipal.add(lbsenha);
+		painelPrincipal.add(txtsenha);
+		lbsenha.setBounds(10,100, 50, 30);
+		txtsenha.setBounds(100,100, 150, 30);
+		
+		
+		painelPrincipal.add(btLogin);
+		btLogin.setBounds(90, 200, 100, 30);
+		btLogin.addActionListener(this);
+		
+		painelPrincipal.add(lbr);
+		painelPrincipal.add(lbp);
+		painelPrincipal.add(lbg);
+		lbr.setForeground(Color.BLUE);
+		lbp.setForeground(Color.RED);
+		lbg.setForeground(Color.BLACK);
+		
+		
+		painelPrincipal.add(btNovo);
+		btNovo.addActionListener(this);
+		
+		telaPrincipal.getContentPane().add(painelPrincipal);
+		telaPrincipal.setVisible(true);
+	}
+	
+	
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btNovo)
+		{
+			TelaCriação tc = new TelaCriação();
+			tc.criarTelaCriacao();
+			
+			telaPrincipal.setVisible(false);
+		}
+		if(e.getSource() == btLogin)
+		{
+			JOptionPane.showMessageDialog(null, "Login confirmado");
+				btLogin.setBounds(0,0,0,0);		
+				lbnome.setBounds(0,0,0,0);
+				txtnome.setBounds(0,0,0,0);
+				lbsenha.setBounds(0,0,0,0);
+				txtsenha.setBounds(0,0,0,0);
+				painelPrincipal.remove(lbnome);
+				painelPrincipal.remove(txtnome);
+				painelPrincipal.remove(lbsenha);
+				painelPrincipal.remove(txtsenha);
+				painelPrincipal.remove(btLogin);
+				btNovo.setBounds(140, 300, 200, 30);
+				telaPrincipal.setSize(500,500);
+				telaPrincipal.setLocation(500, 150);
+				lbr.setBounds(160, 50, 200, 100);
+				lbp.setBounds(220, 50, 200, 100);
+				lbg.setBounds(270, 50, 200, 100);
+		}
+		
+	}
+	public static void main(String[] args) {
+		TelaPrincipal tp = new TelaPrincipal();
+		tp.criarTelaPrincipal();
+
+	}
+	
+}
