@@ -1,0 +1,418 @@
+package RPG;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class TelaCriação implements ActionListener{
+	
+	Personagem pes;
+	PersonagemDao pdao = new PersonagemDao();
+	
+	JFrame telaCriacao = new JFrame("Criação de personagem");
+	JPanel painelCriacao = new JPanel();
+	
+	
+	JLabel ldNome = new JLabel("Nome: ");
+	JLabel ldIdade = new JLabel("Idade: ");
+	JLabel ldGenero = new JLabel("Genero: ");
+	JLabel ldRace = new JLabel("Raças: ");
+	JLabel ldTrabalho = new JLabel("Classes: ");
+	JLabel ldpronto = new JLabel("Personagens: ");
+	
+	JLabel teste = new JLabel("Testando");
+	
+	
+	JTextField txtnome = new JTextField();
+	JTextField txtidade = new JTextField();
+	JTextField txtgenero = new JTextField();
+	
+	
+	JComboBox <String> raças = new JComboBox<String>();
+	JComboBox <String> classes = new JComboBox<String>();
+	JComboBox <String> prontos= new JComboBox<String>();
+	
+	
+	JButton btSalvar = new JButton("Salvar");
+	JButton btSair = new JButton("Sair da criação de personagem");
+	JButton btExcluir = new JButton("Excluir Personagem");
+	JButton btBuscar = new JButton("Status do personagem");
+	JButton btAlterar = new JButton("Alterar personagem");
+	JButton btDuvida = new JButton("?");
+	
+	//Area de exibição de personagens //
+	JTextField nome = new JTextField();
+	JTextField idade = new JTextField();
+	JTextField genero = new JTextField();
+	JTextField raça = new JTextField();
+	JTextField classe = new JTextField();
+	JTextField vitalidade = new JTextField();
+	JTextField força = new JTextField();
+	JTextField destresa = new JTextField();
+	JTextField inteligencia = new JTextField();
+	JTextField magia = new JTextField();
+	JTextField sorte = new JTextField();
+	JTextField afinidade = new JTextField();
+	
+	JLabel ldN = new JLabel("Nome: ");
+	JLabel ldI = new JLabel("Idade: ");
+	JLabel ldG = new JLabel("Genero: ");
+	JLabel ldR = new JLabel("Raça: ");
+	JLabel ldT = new JLabel("Classe: ");
+	JLabel ldSeparação = new JLabel("--------------------Informações de personagem--------------------");
+	JLabel ldVitalidade = new JLabel("Vitalidade: ");
+	JLabel ldForça = new JLabel("Força: ");
+	JLabel ldDestresa = new JLabel("Destresa: ");
+	JLabel ldInteligencia = new JLabel("Inteligencia: ");
+	JLabel ldMagia = new JLabel("Magia: ");
+	JLabel ldSorte = new JLabel("Sorte: ");
+	JLabel ldAfinidade = new JLabel("Afinidade: ");
+	
+	void criarTelaCriacao()
+	{
+		telaCriacao.setSize(700,700);
+		telaCriacao.setLocation(400, 100);
+		
+		painelCriacao.setLayout(null);
+		
+		ldNome.setBounds(10,10,100,30);
+		ldIdade.setBounds(10,60,100,30);
+		ldGenero.setBounds(10,110,100,30);
+		txtnome.setBounds(100,10,150,30);
+		txtidade.setBounds(100,60,150,30);
+		txtgenero.setBounds(100,110,150,30);
+		
+		ldRace.setBounds(10,160,100,30);
+		ldTrabalho.setBounds(10,210,100,30);
+		
+		
+		
+		
+		painelCriacao.add(ldNome);
+		painelCriacao.add(ldIdade);
+		painelCriacao.add(ldGenero);
+		painelCriacao.add(ldRace);
+		painelCriacao.add(ldTrabalho);
+		painelCriacao.add(txtnome);
+		painelCriacao.add(txtidade);
+		painelCriacao.add(txtgenero);
+		painelCriacao.add(ldpronto);
+
+		painelCriacao.add(raças);
+		raças.addItem("Nenhuma");
+		raças.addItem("Humano");
+		raças.addItem("Elfo");
+		raças.addItem("Anão");
+		raças.addItem("Bestial");
+		raças.addItem("Goblim");
+		raças.addItem("Ogro");
+		raças.setBounds(100, 160, 100, 30);
+		
+		painelCriacao.add(classes);
+		classes.addItem("Nenhuma");
+		classes.addItem("Guerreiro");
+		classes.addItem("Paladino");
+		classes.addItem("Mago");
+		classes.addItem("Ladino");
+		classes.setBounds(100, 210, 100, 30);
+		
+		
+		painelCriacao.add(btSair);
+		btSair.setBounds(430, 630, 250, 30);
+		btSair.addActionListener(this);
+		
+		painelCriacao.add(btSalvar);
+		btSalvar.setBounds(300, 10, 100, 30);
+		btSalvar.addActionListener(this);
+		
+		painelCriacao.add(btBuscar);
+		btBuscar.setBounds(450, 300, 200, 30);
+		btBuscar.addActionListener(this);
+		
+		painelCriacao.add(btAlterar);
+		btAlterar.setBounds(450, 350, 200, 30);
+		btAlterar.addActionListener(this);
+		
+		painelCriacao.add(btExcluir);
+		btExcluir.setBounds(450, 400, 200, 30);
+		btExcluir.addActionListener(this);
+		
+		painelCriacao.add(btDuvida);
+		btDuvida.setBounds(640, 1, 45, 30);
+		btDuvida.addActionListener(this);
+		
+		telaCriacao.getContentPane().add(painelCriacao);
+		telaCriacao.setVisible(true);
+		
+		
+		//Exibição de personagem//
+		
+		painelCriacao.add(prontos);
+		prontos.addItem("Nenhum");
+		prontos.setBounds(200, 350, 100, 30);
+		ldpronto.setBounds(100, 350, 100, 30);
+		
+		
+		painelCriacao.add(ldN);
+		painelCriacao.add(ldI);
+		painelCriacao.add(ldG);
+		painelCriacao.add(ldR);
+		painelCriacao.add(ldT);
+		painelCriacao.add(ldVitalidade);
+		painelCriacao.add(ldForça);
+		painelCriacao.add(ldDestresa);
+		painelCriacao.add(ldInteligencia);
+		painelCriacao.add(ldMagia);
+		painelCriacao.add(ldSorte);
+		painelCriacao.add(ldSeparação);
+		painelCriacao.add(ldAfinidade);
+		
+		painelCriacao.add(nome);
+		painelCriacao.add(idade);
+		painelCriacao.add(genero);
+		painelCriacao.add(raça);
+		painelCriacao.add(classe);
+		painelCriacao.add(vitalidade);
+		painelCriacao.add(força);
+		painelCriacao.add(destresa);
+		painelCriacao.add(inteligencia);
+		painelCriacao.add(magia);
+		painelCriacao.add(sorte);
+		painelCriacao.add(afinidade);
+		
+		ldSeparação.setBounds(100, 300, 500, 30);
+		
+		ldN.setBounds(10,400,100,30);
+		nome.setBounds(80,400,100,30);
+		
+		ldI.setBounds(10,450,100,30);
+		idade.setBounds(80,450,100,30);
+		
+		ldG.setBounds(10,500,100,30);
+		genero.setBounds(80,500,100,30);
+		
+		ldR.setBounds(10,550,100,30);
+		raça.setBounds(80,550,100,30);
+		
+		ldT.setBounds(10,600,100,30);
+		classe.setBounds(80,600,100,30);
+		
+		ldVitalidade.setBounds(250,400,100,30);
+		vitalidade.setBounds(330,400,50,30);
+		
+		ldForça.setBounds(250,440,100,30);
+		força.setBounds(330,440,50,30);
+		
+		ldDestresa.setBounds(250,480,100,30);
+		destresa.setBounds(330,480,50,30);
+		
+		ldInteligencia.setBounds(250,520,100,30);
+		inteligencia.setBounds(330,520,50,30);
+		
+		ldMagia.setBounds(250,560,100,30);
+		magia.setBounds(330,560,50,30);
+		
+		ldSorte.setBounds(250,600,100,30);
+		sorte.setBounds(330,600,50,30);
+		
+		ldAfinidade.setBounds(410,500,100,30);
+		afinidade.setBounds(480,500,100,30);
+		
+		sorte.disable();
+		magia.disable();
+		inteligencia.disable();
+		destresa.disable();
+		força.disable();
+		vitalidade.disable();
+		classe.disable();
+		raça.disable();
+		genero.disable();
+		idade.disable();
+		nome.disable();
+		afinidade.disable();
+		
+		sorte.setDisabledTextColor(Color.BLACK);
+		magia.setDisabledTextColor(Color.BLACK);
+		inteligencia.setDisabledTextColor(Color.BLACK);
+		destresa.setDisabledTextColor(Color.BLACK);
+		força.setDisabledTextColor(Color.BLACK);
+		vitalidade.setDisabledTextColor(Color.BLACK);
+		classe.setDisabledTextColor(Color.BLACK);
+		raça.setDisabledTextColor(Color.BLACK);
+		genero.setDisabledTextColor(Color.BLACK);
+		idade.setDisabledTextColor(Color.BLACK);
+		nome.setDisabledTextColor(Color.BLACK);
+		afinidade.setDisabledTextColor(Color.BLACK);
+		
+	}
+		
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == btSalvar)
+		{
+			
+			
+			String n = txtnome.getText();
+			Integer i = Integer.valueOf(txtidade.getText());
+			String g =txtgenero.getText();
+			Integer r = raças.getSelectedIndex();
+			Integer c = classes.getSelectedIndex();
+			
+			
+			pes = new Personagem(n, i, g, r, c);
+			pdao.salvar(pes);
+			pes.escolherRaca();
+			pes.escolherTrabalho();
+			pes.escolherAfinidade();
+			
+			prontos.addItem(n);
+			JOptionPane.showMessageDialog(null, "Personagem salvo com sucesso");
+			txtnome.setText("");
+			txtidade.setText(String.valueOf(""));
+			txtgenero.setText("");
+			raças.setSelectedIndex(0);
+			classes.setSelectedIndex(0);
+			nome.setText("");
+			idade.setText(String.valueOf(""));
+			genero.setText("");
+			raça.setText("");
+			classe.setText("");
+			vitalidade.setText(String.valueOf(""));
+			força.setText(String.valueOf(""));
+			destresa.setText(String.valueOf(""));
+			inteligencia.setText(String.valueOf(""));
+			magia.setText(String.valueOf(""));
+			sorte.setText(String.valueOf(""));
+			afinidade.setText(String.valueOf(""));
+			
+		}
+		
+		if(e.getSource() == btExcluir)
+		{
+			
+			int x = prontos.getSelectedIndex();
+			if(x == 0)
+			{
+				JOptionPane.showMessageDialog(null, "Selecione um personagem primeiro");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Personagem excluido com sucesso");
+				pdao.exculir(x);
+				prontos.removeItemAt(x);
+				prontos.setSelectedIndex(0);
+				nome.setText("");
+				idade.setText(String.valueOf(""));
+				genero.setText("");
+				raça.setText("");
+				classe.setText("");
+				vitalidade.setText(String.valueOf(""));
+				força.setText(String.valueOf(""));
+				destresa.setText(String.valueOf(""));
+				inteligencia.setText(String.valueOf(""));
+				magia.setText(String.valueOf(""));
+				sorte.setText(String.valueOf(""));
+				afinidade.setText(String.valueOf(""));
+				
+				
+			}
+			
+		}
+		
+		if(e.getSource() == btBuscar)
+		{
+			int y = prontos.getSelectedIndex();
+			
+			if(y == 0)
+			{
+				JOptionPane.showMessageDialog(null, "Selecione um personagem primeiro");
+			}
+			else
+			{
+				pes = new Personagem();
+				pes = pdao.buscar(y);
+				nome.setText(pes.getNome());
+				idade.setText(String.valueOf(pes.getIdade()));
+				genero.setText(pes.getGenero());
+				raça.setText(pes.getNomeRace());
+				classe.setText(pes.getNomeTrabalho());
+				vitalidade.setText(String.valueOf(pes.getVit()));
+				força.setText(String.valueOf(pes.getForça()));
+				destresa.setText(String.valueOf(pes.getDes()));
+				inteligencia.setText(String.valueOf(pes.getIntel()));
+				magia.setText(String.valueOf(pes.getMag()));
+				sorte.setText(String.valueOf(pes.getSor()));
+				afinidade.setText(String.valueOf(pes.getAfinidade()));
+			}	
+		}
+		
+		if(e.getSource() == btAlterar)
+		{
+			int y = prontos.getSelectedIndex();
+			if(y == 0)
+			{
+				JOptionPane.showMessageDialog(null, "Selecione um personagem primeiro");
+			}
+			else
+			{
+				String n = txtnome.getText();
+				Integer i = Integer.valueOf(txtidade.getText());
+				String g =txtgenero.getText();
+				Integer r = raças.getSelectedIndex();
+				Integer c = classes.getSelectedIndex();
+				
+				pes = new Personagem(n, i, g, r, c);
+				pdao.alterar(y, pes);
+				
+				pes.escolherRaca();
+				pes.escolherTrabalho();
+				pes.escolherAfinidade();
+				JOptionPane.showMessageDialog(null, "Personagem alterado com sucesso");
+				prontos.setSelectedIndex(0);
+				txtnome.setText("");
+				txtidade.setText(String.valueOf(""));
+				txtgenero.setText("");
+				raças.setSelectedIndex(0);
+				classes.setSelectedIndex(0);
+				nome.setText("");
+				idade.setText(String.valueOf(""));
+				genero.setText("");
+				raça.setText("");
+				classe.setText("");
+				vitalidade.setText(String.valueOf(""));
+				força.setText(String.valueOf(""));
+				destresa.setText(String.valueOf(""));
+				inteligencia.setText(String.valueOf(""));
+				magia.setText(String.valueOf(""));
+				sorte.setText(String.valueOf(""));
+				afinidade.setText(String.valueOf(""));
+			}
+			
+		}
+		
+		
+		if(e.getSource() == btDuvida)
+		{
+			TelaInfo t = new TelaInfo();
+			t.criarTelaInfo();
+			telaCriacao.setLocation(10, 50);
+		}
+		if(e.getSource() == btSair)
+		{
+			TelaPrincipal tp = new TelaPrincipal();
+			tp.criarTelaPrincipal();
+			telaCriacao.setVisible(false);
+		}
+		
+	}
+	
+}
