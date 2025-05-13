@@ -264,6 +264,12 @@ public class TelaCriação implements ActionListener{
 			Integer c = classes.getSelectedIndex();
 			
 			
+			if(n == "" || i <= 0 || g == "")
+			{
+				JOptionPane.showMessageDialog(null, "Escreva os dados do presonagem");
+			}
+			else
+			{
 			pes = new Personagem(n, i, g, r, c);
 			pdao.salvar(pes);
 			pes.escolherRaca();
@@ -292,6 +298,7 @@ public class TelaCriação implements ActionListener{
 			
 			afinidade.setBackground(Color.WHITE);
 			prontos.setSelectedIndex(0);
+			}
 		}
 		
 		if(e.getSource() == btExcluir)
