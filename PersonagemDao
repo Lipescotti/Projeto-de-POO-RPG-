@@ -1,0 +1,32 @@
+package RPG;
+
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+
+
+public class PersonagemDao {
+	
+	ArrayList<Personagem> lista = new ArrayList<Personagem>();
+	
+	int a = 0;
+	void salvar(Personagem p)
+	{
+		lista.add(p);
+	}
+	Personagem buscar(int cod)
+	{
+		cod--;
+		return lista.get(cod);
+	}
+	void exculir(int cod)
+	{
+		cod--;
+		lista.remove(cod);
+	}
+	void alterar(int cod, Personagem p)
+	{
+		cod--;
+		lista.set(cod, p);
+	}
+}
