@@ -91,7 +91,7 @@ public class TelaInfo implements ActionListener{
 		txtdescriçãoClasse.setWrapStyleWord(true);
 		txtdescriçãoClasse.setDisabledTextColor(Color.BLACK);
 		
-		txtdescriçãoRaça.setText("Selecione uma Raça e aperte em atualizar para exibir detalhes da raça");
+		txtdescriçãoRaça.setText("Selecione uma Raça e aperte em atualizar para exibir os status iniciais da raça");
 		txtdescriçãoRaça.setLineWrap(true);
 		txtdescriçãoRaça.setWrapStyleWord(true);
 		txtdescriçãoRaça.setDisabledTextColor(Color.BLACK);
