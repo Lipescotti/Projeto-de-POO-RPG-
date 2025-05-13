@@ -1,0 +1,252 @@
+package RPG;
+
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class TelaInfo implements ActionListener{
+	Personagem ajuda;
+	
+	
+	JFrame telaInfo = new JFrame("Informações");
+	JPanel painelInfo = new JPanel();
+	
+	
+	
+	JButton atualizar = new JButton("Atualiziar informações"); 
+	JComboBox <String> classes = new JComboBox<String>();
+	JComboBox <String> raças = new JComboBox<String>();
+	
+	JLabel ldDescriaçãoClasse = new JLabel("Descriação da Classe");
+	JTextArea txtdescriçãoClasse = new JTextArea();
+	JLabel ldDescriaçãoRaça = new JLabel("Descriação da Raça");
+	JTextArea txtdescriçãoRaça = new JTextArea();
+	
+	                                                                  //STATUS//
+	JLabel ldTitulo = new JLabel("----------INFORMAÇÕES DOS STATUS----------");
+	JLabel ldAfinidades = new JLabel("<html>AFINIDADES<br>ELEMENTAIS </html>");
+	JLabel ldvitalidade = new JLabel("VITALIDADE");
+	JLabel ldforça = new JLabel("FORÇA");
+	JLabel lddestresa = new JLabel("DESTREZA");
+	JLabel ldinteligencia = new JLabel("INTELIGÊNCIA");
+	JLabel ldmagia = new JLabel("MAGIA");
+	JLabel ldsorte = new JLabel("SORTE");
+	
+	JTextArea txtvitalidade = new JTextArea();
+	JTextArea txtforça = new JTextArea();
+	JTextArea txtdestresa = new JTextArea();
+	JTextArea txtinteligencia = new JTextArea();
+	JTextArea txtmagia = new JTextArea();
+	JTextArea txtsorte = new JTextArea();
+	JTextArea txtafinidade = new JTextArea();
+	
+	void criarTelaInfo() {
+		
+		telaInfo.setSize(700,700);
+		telaInfo.setLocation(800, 50);
+		painelInfo.setLayout(null);
+		
+		painelInfo.add(ldTitulo);
+		ldTitulo.setBounds(220,10,500,30);
+		
+		painelInfo.add(classes);
+		painelInfo.add(raças);
+		
+		classes.addItem("Nenhuma");
+		classes.addItem("Guerreiro");
+		classes.addItem("Paladino");
+		classes.addItem("Mago");
+		classes.addItem("Ladino");
+		classes.setBounds(110, 450, 100, 30);
+		painelInfo.add(ldDescriaçãoClasse);
+		ldDescriaçãoClasse.setBounds(100, 480, 200, 30);
+		painelInfo.add(txtdescriçãoClasse);
+		txtdescriçãoClasse.setBounds(30, 510, 270, 100);
+		txtdescriçãoClasse.disable();
+		
+		
+		raças.addItem("Nenhuma");
+		raças.addItem("Humano");
+		raças.addItem("Elfo");
+		raças.addItem("Anão");
+		raças.addItem("Bestial");
+		raças.addItem("Goblim");
+		raças.addItem("Ogro");
+		raças.setBounds(500, 450, 100, 30);
+		painelInfo.add(ldDescriaçãoRaça);
+		ldDescriaçãoRaça.setBounds(490, 480, 200, 30);
+		painelInfo.add(txtdescriçãoRaça);
+		txtdescriçãoRaça.setBounds(410, 510, 270, 100);
+		txtdescriçãoRaça.disable();
+
+		
+		txtdescriçãoClasse.setText("Selecione uma Classe e aperte em atualizar para exibir detalhes da classe");
+		txtdescriçãoClasse.setLineWrap(true);
+		txtdescriçãoClasse.setWrapStyleWord(true);
+		txtdescriçãoClasse.setDisabledTextColor(Color.BLACK);
+		
+		txtdescriçãoRaça.setText("Selecione uma Raça e aperte em atualizar para exibir detalhes da raça");
+		txtdescriçãoRaça.setLineWrap(true);
+		txtdescriçãoRaça.setWrapStyleWord(true);
+		txtdescriçãoRaça.setDisabledTextColor(Color.BLACK);
+		
+		
+		painelInfo.add(atualizar);
+		atualizar.setBounds(270, 450, 180, 30);
+		atualizar.addActionListener(this);
+		
+		//Status//
+		
+		painelInfo.add(ldvitalidade);
+		painelInfo.add(txtvitalidade);
+		ldvitalidade.setBounds(10, 50, 200, 30);
+		txtvitalidade.setBounds(120, 50, 510, 30);
+		txtvitalidade.disable();
+		txtvitalidade.setDisabledTextColor(Color.BLACK);
+		txtvitalidade.setText("Influencia na vida e resistências do personagem.");
+		
+		painelInfo.add(ldforça);
+		painelInfo.add(txtforça);
+		ldforça.setBounds(10, 100, 200, 30);
+		txtforça.setBounds(120, 100, 510, 30);
+		txtforça.disable();
+		txtforça.setDisabledTextColor(Color.BLACK);
+		txtforça.setText("Implica no dano físico do personagem.");
+		
+		painelInfo.add(lddestresa);
+		painelInfo.add(txtdestresa);
+		lddestresa.setBounds(10, 150, 200, 30);
+		txtdestresa.setBounds(120, 150, 510, 30);
+		txtdestresa.disable();
+		txtdestresa.setDisabledTextColor(Color.BLACK);
+		txtdestresa.setText("Afeta os reflexos e a velocidade do personagem.");
+		
+		painelInfo.add(ldinteligencia);
+		painelInfo.add(txtinteligencia);
+		ldinteligencia.setBounds(10, 200, 200, 30);
+		txtinteligencia.setBounds(120, 200, 510, 30);
+		txtinteligencia.disable();
+		txtinteligencia.setDisabledTextColor(Color.BLACK);
+		txtinteligencia.setText("Facilidade de aprendizado do personagem.");
+		
+		painelInfo.add(ldmagia);
+		painelInfo.add(txtmagia);
+		ldmagia.setBounds(10, 250, 200, 30);
+		txtmagia.setBounds(120, 250, 510, 30);
+		txtmagia.disable();
+		txtmagia.setDisabledTextColor(Color.BLACK);
+		txtmagia.setText("Dano mágico do personagem.");
+		
+		painelInfo.add(ldsorte);
+		painelInfo.add(txtsorte);
+		ldsorte.setBounds(10, 300, 200, 30);
+		txtsorte.setBounds(120, 300, 510, 30);
+		txtsorte.disable();
+		txtsorte.setDisabledTextColor(Color.BLACK);
+		txtsorte.setText("Controla a raridade e quantidade de drops.");
+		
+		painelInfo.add(ldAfinidades);
+		painelInfo.add(txtafinidade);
+		ldAfinidades.setBounds(10, 350, 200, 45);
+		txtafinidade.setBounds(120, 350, 510, 40);
+		txtafinidade.setText("As afinidades elementais influenciam na eficácia de aprendizado de magias ou na capacidade de uso itens mágicos relacionados a determinado elemento.");
+		txtafinidade.disable();
+		txtafinidade.setDisabledTextColor(Color.BLACK);
+		txtafinidade.setLineWrap(true);
+		txtafinidade.setWrapStyleWord(true);
+		
+		
+		telaInfo.getContentPane().add(painelInfo);
+		telaInfo.setVisible(true);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource() == atualizar)
+		{
+			if(classes.getSelectedIndex() == 0)
+			{
+				txtdescriçãoClasse.setText("Selecione uma Classe e aperte em atualizar para exibir detalhes da classe");
+			}
+			else if(classes.getSelectedIndex() == 1)
+			{
+				txtdescriçãoClasse.setText("O guerreiro é uma escolha versátil devido à combinação do personagem de alta força e destreza, permitindo-lhes fazer uso da maioria dos equipamentos logo de inicio.");
+			}
+			else if(classes.getSelectedIndex() == 2)
+			{
+				txtdescriçãoClasse.setText("Paladinos apoiam seus aliados com auras sagradas e bençãos para proteger seus amigos de injúrias e aumentar seus poderes. Trajando armadura pesada, eles podem aguentar golpes terríveis na batalha mais densa enquanto cura seus aliados feridos.");
+			}
+			else if(classes.getSelectedIndex() == 3)
+			{
+				txtdescriçãoClasse.setText("Se você quiser usar magias como sua arma ofensiva principal,então o Mago é a melhor classe para começar. A magia será a sua principal fonte de dano no início do jogo, ao contrário do guerreiro com sua força.");
+			}
+			else if(classes.getSelectedIndex() == 4)
+			{
+				txtdescriçãoClasse.setText("O Ladino é um aventureiro preciso e veloz, que facilmente se movimenta despercebido pelo campo de batalha.");
+			}
+			
+			
+			if(raças.getSelectedIndex() == 0)
+			{
+				txtdescriçãoRaça.setText("Selecione uma Raça e aperte em atualizar para exibir os status iniciais da raça");
+			}
+			else if(raças.getSelectedIndex() == 1)
+			{
+				txtdescriçãoRaça.setText("Vitalidade     -->  10.0" 
+									  +"\nForça           -->  10.0" 
+									  +"\nDestresa     -->  10.0"
+									  +"\nInteligencia  -->  10.0"
+									  +"\nMagia           -->  10.0"
+									  +"\nSorte           -->   10.0");
+			}
+			else if(raças.getSelectedIndex() == 2)
+			{
+				txtdescriçãoRaça.setText("Vitalidade     -->  08.0" 
+						  +"\nForça           -->  06.0" 
+						  +"\nDestresa     -->  12.0"
+						  +"\nInteligencia  -->  14.0"
+						  +"\nMagia           -->  16.0"
+						  +"\nSorte           -->   12.0");			}
+			else if(raças.getSelectedIndex() == 3)
+			{
+				txtdescriçãoRaça.setText("Vitalidade     -->  15.0" 
+						  +"\nForça           -->  07.0" 
+						  +"\nDestresa     -->  02.0"
+						  +"\nInteligencia  -->  20.0"
+						  +"\nMagia           -->  12.0"
+						  +"\nSorte           -->   05.0");			}
+			else if(raças.getSelectedIndex() == 4)
+			{
+				txtdescriçãoRaça.setText("Vitalidade     -->  12.0" 
+						  +"\nForça           -->  15.0" 
+						  +"\nDestresa     -->  15.0"
+						  +"\nInteligencia  -->  05.0"
+						  +"\nMagia           -->  10.0"
+						  +"\nSorte           -->   08.0");			}
+			else if(raças.getSelectedIndex() == 5)
+			{
+				txtdescriçãoRaça.setText("Vitalidade     -->  06.0" 
+						  +"\nForça           -->  09.0" 
+						  +"\nDestresa     -->  16.0"
+						  +"\nInteligencia  -->  01.0"
+						  +"\nMagia           -->  03.0"
+						  +"\nSorte           -->   05.0");			}
+			else if(raças.getSelectedIndex() == 6)
+			{
+				txtdescriçãoRaça.setText("Vitalidade     -->  18.0" 
+						  +"\nForça           -->  16.0" 
+						  +"\nDestresa     -->  07.0"
+						  +"\nInteligencia  -->  05.0"
+						  +"\nMagia           -->  02.0"
+						  +"\nSorte           -->   05.0");			}
+		}
+		
+	}
+}
