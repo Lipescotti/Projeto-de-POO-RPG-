@@ -3,8 +3,6 @@ package RPG;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -28,9 +26,7 @@ public class TelaCriação implements ActionListener{
 	JLabel ldRace = new JLabel("Raças: ");
 	JLabel ldTrabalho = new JLabel("Classes: ");
 	JLabel ldpronto = new JLabel("Personagens: ");
-	
-	JLabel teste = new JLabel("Testando");
-	
+
 	
 	JTextField txtnome = new JTextField();
 	JTextField txtidade = new JTextField();
@@ -310,6 +306,12 @@ public class TelaCriação implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Personagem excluido com sucesso");
 				pdao.exculir(x);
 				prontos.removeItemAt(x);
+				
+				txtnome.setText("");
+				txtidade.setText(String.valueOf(""));
+				txtgenero.setText("");
+				raças.setSelectedIndex(0);
+				classes.setSelectedIndex(0);
 				prontos.setSelectedIndex(0);
 				nome.setText("");
 				idade.setText(String.valueOf(""));
@@ -359,21 +361,24 @@ public class TelaCriação implements ActionListener{
 				sorte.setText(String.valueOf(pes.getSor()));
 				afinidade.setText(String.valueOf(pes.getAfinidade()));
 				
+				afinidade.setBackground(Color.black);
+				
+				
 				switch(pes.getAfinidade())
 				{
 				case "Fogo":
 					afinidade.setDisabledTextColor(Color.RED);
-					afinidade.setBackground(Color.WHITE);
+					afinidade.setBackground(Color.white);
 				break;
 				
 				case "Água":
 					afinidade.setDisabledTextColor(Color.BLUE);
-					afinidade.setBackground(Color.black);
+					afinidade.setBackground(Color.white);
 				break;
 				
 				case "Vento":
 					afinidade.setDisabledTextColor(Color.GREEN);
-					afinidade.setBackground(Color.WHITE);
+					afinidade.setBackground(Color.black);
 				break;
 				
 				case "Terra":
@@ -388,7 +393,7 @@ public class TelaCriação implements ActionListener{
 				
 				case "Trevas":
 					afinidade.setDisabledTextColor(Color.magenta);
-					afinidade.setBackground(Color.WHITE);
+					afinidade.setBackground(Color.white);
 				break;
 				
 				}
