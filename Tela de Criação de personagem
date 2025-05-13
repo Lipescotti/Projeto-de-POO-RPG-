@@ -251,7 +251,6 @@ public class TelaCriação implements ActionListener{
 		genero.setDisabledTextColor(Color.BLACK);
 		idade.setDisabledTextColor(Color.BLACK);
 		nome.setDisabledTextColor(Color.BLACK);
-		afinidade.setDisabledTextColor(Color.BLACK);
 		
 	}
 		
@@ -294,6 +293,8 @@ public class TelaCriação implements ActionListener{
 			sorte.setText(String.valueOf(""));
 			afinidade.setText(String.valueOf(""));
 			
+			afinidade.setBackground(Color.WHITE);
+			prontos.setSelectedIndex(0);
 		}
 		
 		if(e.getSource() == btExcluir)
@@ -323,7 +324,7 @@ public class TelaCriação implements ActionListener{
 				sorte.setText(String.valueOf(""));
 				afinidade.setText(String.valueOf(""));
 				
-				
+				afinidade.setBackground(Color.WHITE);
 			}
 			
 		}
@@ -340,6 +341,11 @@ public class TelaCriação implements ActionListener{
 			{
 				pes = new Personagem();
 				pes = pdao.buscar(y);
+				
+				txtnome.setText(pes.getNome());
+				txtidade.setText(String.valueOf(pes.getIdade()));
+				txtgenero.setText(pes.getGenero());
+				
 				nome.setText(pes.getNome());
 				idade.setText(String.valueOf(pes.getIdade()));
 				genero.setText(pes.getGenero());
@@ -352,6 +358,40 @@ public class TelaCriação implements ActionListener{
 				magia.setText(String.valueOf(pes.getMag()));
 				sorte.setText(String.valueOf(pes.getSor()));
 				afinidade.setText(String.valueOf(pes.getAfinidade()));
+				
+				switch(pes.getAfinidade())
+				{
+				case "Fogo":
+					afinidade.setDisabledTextColor(Color.RED);
+					afinidade.setBackground(Color.WHITE);
+				break;
+				
+				case "Água":
+					afinidade.setDisabledTextColor(Color.BLUE);
+					afinidade.setBackground(Color.black);
+				break;
+				
+				case "Vento":
+					afinidade.setDisabledTextColor(Color.GREEN);
+					afinidade.setBackground(Color.WHITE);
+				break;
+				
+				case "Terra":
+					afinidade.setDisabledTextColor(Color.ORANGE);
+					afinidade.setBackground(Color.black);
+				break;
+				
+				case "Luz":
+					afinidade.setDisabledTextColor(Color.YELLOW);
+					afinidade.setBackground(Color.black);
+				break;
+				
+				case "Trevas":
+					afinidade.setDisabledTextColor(Color.magenta);
+					afinidade.setBackground(Color.WHITE);
+				break;
+				
+				}
 			}	
 		}
 		
@@ -395,6 +435,7 @@ public class TelaCriação implements ActionListener{
 				magia.setText(String.valueOf(""));
 				sorte.setText(String.valueOf(""));
 				afinidade.setText(String.valueOf(""));
+				afinidade.setBackground(Color.WHITE);
 			}
 			
 		}
