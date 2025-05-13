@@ -1,0 +1,273 @@
+package RPG;
+
+import java.util.Random;
+
+public class Personagem {
+
+	
+	private String nome;
+	private Integer idade;
+	private String genero;
+	private Double vit;
+	private Double força;
+	private Double mag;
+	private Double intel;
+	private Double sor;
+	private Double des;
+	private Integer race;
+	private Integer trabalho;
+	private String nomeRace;
+	private String nomeTrabalho;
+	private String afinidade;
+	
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public Integer getIdade() {
+		return idade;
+	}
+	public void setIdade(Integer idade) {
+		this.idade = idade;
+	}
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+	public Double getVit() {
+		return vit;
+	}
+	public void setVit(Double vit) {
+		this.vit = vit;
+	}
+	public Double getForça() {
+		return força;
+	}
+	public void setForça(Double força) {
+		this.força = força;
+	}
+	public Double getMag() {
+		return mag;
+	}
+	public void setMag(Double mag) {
+		this.mag = mag;
+	}
+	public Double getIntel() {
+		return intel;
+	}
+	public void setIntel(Double intel) {
+		this.intel = intel;
+	}
+	public Double getSor() {
+		return sor;
+	}
+	public void setSor(Double sor) {
+		this.sor = sor;
+	}
+	public Double getDes() {
+		return des;
+	}
+	public void setDes(Double des) {
+		this.des = des;
+	}
+	public Integer getRace() {
+		return race;
+	}
+	public void setRace(Integer race) {
+		this.race = race;
+	}
+	public Integer getTrabalho() {
+		return trabalho;
+	}
+	public void setTrabalho(Integer trabalho) {
+		this.trabalho = trabalho;
+	}
+	public String getNomeRace() {
+		return nomeRace;
+	}
+	public void setNomeRace(String nomeRace) {
+		this.nomeRace = nomeRace;
+	}
+	public String getNomeTrabalho() {
+		return nomeTrabalho;
+	}
+	public void setNomeTrabalho(String nomeTrabalho) {
+		this.nomeTrabalho = nomeTrabalho;
+	}
+	
+	public String getAfinidade() {
+		return afinidade;
+	}
+	public void setAfinidade(String afinidade) {
+		this.afinidade = afinidade;
+	}
+	Personagem(){}
+	public Personagem(String nome, Integer idade, String genero, Integer race, Integer trabalho) {
+		super();
+		this.nome = nome;
+		this.idade = idade;
+		this.genero = genero;
+		this.race = race;
+		this.trabalho = trabalho;
+	}
+	public void escolherRaca()
+	{
+		
+		if(getRace() == 1)
+		{
+			setNomeRace("Humano");
+			setVit(10.0);
+			setForça(10.0);
+			setMag(10.0);
+			setIntel(10.0);
+			setSor(10.0);
+			setDes(10.0);
+		}
+		else if(getRace() == 2)
+		{
+			setNomeRace("Elfo");
+			setVit(8.0);
+			setForça(6.0);
+			setMag(16.0);
+			setIntel(14.0);
+			setSor(12.0);
+			setDes(12.0);
+		}
+		else if(getRace() == 3)
+		{
+			setNomeRace("Anão");
+			setVit(15.0);
+			setForça(7.0);
+			setMag(12.0);
+			setIntel(20.0);
+			setSor(5.0);
+			setDes(2.0);
+		}
+		else if(getRace() == 4)
+		{
+			setNomeRace("Bestial");
+			setVit(12.0);
+			setForça(15.0);
+			setMag(10.0);
+			setIntel(5.0);
+			setSor(8.0);
+			setDes(15.0);
+		}
+		else if(getRace() == 5)
+		{
+			setNomeRace("Goblim");
+			setVit(6.0);
+			setForça(9.0);
+			setMag(3.0);
+			setIntel(1.0);
+			setSor(5.0);
+			setDes(16.0);
+		}
+		else if(getRace() == 6)
+		{
+			setNomeRace("Ogro");
+			setVit(18.0);
+			setForça(16.0);
+			setMag(2.0);
+			setIntel(5.0);
+			setSor(5.0);
+			setDes(7.0);
+		}
+		else
+		{
+			setNomeRace("Nenhum");
+			setVit(0.0);
+			setForça(0.0);
+			setMag(0.0);
+			setIntel(0.0);
+			setSor(0.0);
+			setDes(0.0);
+		}
+	}
+		public void escolherTrabalho()
+		{
+
+			if(getTrabalho() == 1)
+			{
+				setNomeTrabalho("Guerreiro");
+				setVit(getVit() + getVit()*0.02);
+				setForça(getForça() + getForça()*0.03);
+				setMag(getMag() - getMag()*0.05);
+				setIntel(getIntel() - getIntel()*0.03);
+				setDes(getDes() + getDes()*0.01);
+			}
+			else if(getTrabalho() == 2)
+			{
+				setNomeTrabalho("Paladino");
+				setVit(getVit() + getVit()*0.05);
+				setForça(getForça() + getForça()*0.02);
+				setMag(getMag() - getMag()*0.05);
+				setDes(getDes() - getDes()*0.03);
+			}
+			else if(getTrabalho() == 3)
+			{
+				setNomeTrabalho("Mago");
+				setVit(getVit() - getVit()*0.05);
+				setMag(getMag() + getMag()*0.06);
+				setIntel(getIntel() + getIntel()*0.03);
+				setDes(getDes() - getDes()*0.03);
+			}
+			else if(getTrabalho() == 4)
+			{
+				setNomeTrabalho("Ladino");
+				setVit(getVit() + getVit()*0.02);
+				setForça(getForça() + getForça()*0.03);
+				setMag(getMag() - getMag()*0.05);
+				setSor(getSor() + getSor()*0.02);
+				setDes(getDes() + getDes()*0.08);
+			}
+			else
+			{
+				setNomeTrabalho("Nenhum");
+				setVit(0.0);
+				setForça(0.0);
+				setMag(0.0);
+				setIntel(0.0);
+				setSor(0.0);
+				setDes(0.0);
+			}
+		}
+		public void escolherAfinidade()
+		{
+			Random aleatorio = new Random();
+			int rng = aleatorio.nextInt(6);
+			if (rng == 0)
+			{
+				setAfinidade("Fogo");
+			}
+			else if (rng == 1)
+			{
+				setAfinidade("Água");
+			}
+			else if (rng == 2)
+			{
+				setAfinidade("Vento");
+			}
+			else if (rng == 3)
+			{
+				setAfinidade("Terra");
+			}
+			else if (rng == 4)
+			{
+				setAfinidade("Luz");
+			}
+			else if (rng == 5)
+			{
+				setAfinidade("Trevas");
+			}
+		}
+	
+
+		
+	
+		
+}
