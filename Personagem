@@ -105,6 +105,7 @@ public class Personagem {
 	public void setAfinidade(String afinidade) {
 		this.afinidade = afinidade;
 	}
+	
 	Personagem(){}
 	public Personagem(String nome, Integer idade, String genero, Integer race, Integer trabalho) {
 		super();
@@ -114,6 +115,8 @@ public class Personagem {
 		this.race = race;
 		this.trabalho = trabalho;
 	}
+	
+	
 	public void escolherRaca()
 	{
 		
@@ -268,6 +271,9 @@ public class Personagem {
 	
 
 		
+	
+		
+}
 	
 		
 }
