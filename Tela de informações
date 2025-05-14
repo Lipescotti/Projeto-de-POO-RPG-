@@ -11,9 +11,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 public class TelaInfo implements ActionListener{
-	Personagem ajuda;
-	
-	
 	JFrame telaInfo = new JFrame("Informações");
 	JPanel painelInfo = new JPanel();
 	
